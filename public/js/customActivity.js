@@ -73,7 +73,7 @@ define(['postmonger','jquery'], function (Postmonger,jquery) {
      */
     function initialLoad(data) {
         console.log(data);
-        activity = data;
+        let activity = data;
         const inArguments = hasInArguments ? activity.arguments.execute.inArguments : [];
         const title = inArguments.find((arg) => arg.title);
         const message = inArguments.find((arg) => arg.message);
