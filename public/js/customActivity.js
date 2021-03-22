@@ -76,16 +76,16 @@ define(['postmonger','jquery'], function (Postmonger,jquery) {
         const hasInArguments = Boolean(
             activity.arguments &&
             activity.arguments.execute &&
-            activity.arguments.execute.inArguments &&
-            activity.arguments.execute.inArguments.length > 0
+            activity.arguments.execute.inArguments 
         );        
-        const inArguments = hasInArguments ? activity.arguments.execute.inArguments : [];
-        const title = inArguments.find((arg) => arg.title);
-        const message = inArguments.find((arg) => arg.message);
-        const time = inArguments.find((arg) => arg.time);
-        $("input[name=title]").val(title);
-        $("input[name=message]").val(message);
-        $("input[name=time]").val(time);        
+        const inArguments = hasInArguments ? activity.arguments.execute.inArguments : {};
+        console.log(inArguments);
+        // const title = inArguments.find((arg) => arg.title);
+        // const message = inArguments.find((arg) => arg.message);
+        // const time = inArguments.find((arg) => arg.time);
+        $("input[name=title]").val(inArguments.title);
+        $("input[name=message]").val(inArguments.message);
+        $("input[name=time]").val(inArguments.time);        
     };
 
 
