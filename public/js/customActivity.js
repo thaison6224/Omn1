@@ -1,4 +1,4 @@
-define(['postmonger'], function (Postmonger) {
+define(['postmonger','jquery'], function (Postmonger,jquery) {
     'use strict';
 
     let connection = new Postmonger.Session();
@@ -9,7 +9,7 @@ define(['postmonger'], function (Postmonger) {
     let eventSchema = ''; // variable is used in parseEventSchema()
     let lastnameSchema = ''; // variable is used in parseEventSchema()
     let eventDefinitionKey;
-
+    // var $ = require('jquery');
     $(window).ready(onRender);
     connection.on('initActivity', initialize);
     connection.on('clickedNext', save); //Save function within MC
