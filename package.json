@@ -29,6 +29,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "file-system": "^2.2.2",
+    "jquery": "^3.6.0",
     "jsforce": "^1.9.3",
     "jsonwebtoken": "^8.5.1",
     "njwt": "^1.0.0",
