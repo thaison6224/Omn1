@@ -73,9 +73,14 @@ define(['postmonger','jquery'], function (Postmonger,jquery) {
      */
     function initialLoad(data) {
         console.log(data);
-        $("input[name=title]").val(data.title);
-        $("input[name=message]").val(data.message);
-        $("input[name=time]").val(data.time);        
+        activity = data;
+        const inArguments = hasInArguments ? activity.arguments.execute.inArguments : [];
+        const title = inArguments.find((arg) => arg.title);
+        const message = inArguments.find((arg) => arg.message);
+        const time = inArguments.find((arg) => arg.time);
+        $("input[name=title]").val(title);
+        $("input[name=message]").val(message);
+        $("input[name=time]").val(time);        
     };
 
 
