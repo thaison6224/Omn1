@@ -51,13 +51,12 @@ define(['postmonger','jquery'], function (Postmonger,jquery) {
         var title = $("input[name=title]").val();
         var message = $("input[name=message]").val();
         var time = $("input[name=time]").val();
-        payload['arguments'].execute.inArguments = [
+        payload['arguments'].execute.inArguments =
             {
                 title: title,
                 message: message,
                 time: time
-            }
-        ];
+            };
         payload['metaData'].isConfigured = true;
         connection.trigger('updateActivity', payload);
     }
