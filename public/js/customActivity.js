@@ -48,9 +48,14 @@ define(['postmonger','jquery'], function (Postmonger,jquery) {
      * The config.json will be updated here if there are any updates to be done via Front End UI
      */
     function save() {
+        var title = $("input[name=title]").val();
+        var message = $("input[name=message]").val();
+        var time = $("input[name=time]").val();
         payload['arguments'].execute.inArguments = [
             {
-                SAMPLE_PARAM: "SAMPLE PARAM DATA FROM CONFIG.JSON"
+                title: title,
+                message: message,
+                time: time
             }
         ];
         payload['metaData'].isConfigured = true;
@@ -67,6 +72,10 @@ define(['postmonger','jquery'], function (Postmonger,jquery) {
      * e.g. input fields, select lists
      */
     function initialLoad(data) {
+        console.log(data);
+        $("input[name=title]").val(data.title);
+        $("input[name=message]").val(data.message);
+        $("input[name=time]").val(data.time);        
     };
 
 
