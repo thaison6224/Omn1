@@ -39,7 +39,7 @@
     
     "configurationArguments":
     {
-        "applicationExtensionKey": "<APP EXTENSION KEY>",
+        "applicationExtensionKey": "AlCEd6CXl6FiTyTum1P98fLDeOtvOC4-JT_8VddKO1Kw8m6LY_kIEZfNxUZ-fhou16HPC0sexeQTfw5z2RDGa4gNudSeb1etfllu8DlFtGQiFypZJ3XCCmMVnNDcVm_bKKXu6ibUIvwC_GaViak5VfX81QHxpvGGLRiHJzcAEfbkVPf6Z0NKZUOj24g4D3aOkcWhDjZZMk-HLgMxoFw0s750FS8IvC6knfkAypBs4dzuC4aiv8hpBf5F4DfBDg2",
         "save":
         {
             "url": "https://omn1.herokuapp.com/journeybuilder/save",

@@ -115,7 +115,6 @@ define(['postmonger','jquery'], function (Postmonger,jquery) {
         connection.on('requestedSchema', function (data) {
             // save schema
             let dataJson = data['schema'];
-            console.log('parseEventSchema');
             for (let i = 0; i < dataJson.length; i++) {
 
                 // Last name schema and creation of event schema
