@@ -12,8 +12,8 @@
     {
         "en-US":
         {
-            "name": "Create Task",
-            "description": " Khi custom activity này được kích hoạt sẽ tạo 1 task trong Sales cloud cho contact tương ứng",
+            "name": "Send SMS",
+            "description": "OMN1 Send SMS Message",
             "step1Label": "Configure Activity"
         }
     },
