@@ -48,14 +48,18 @@ define(['postmonger','jquery'], function (Postmonger,jquery) {
      * The config.json will be updated here if there are any updates to be done via Front End UI
      */
     function save() {
-        var title = $("input[name=title]").val();
-        var message = $("input[name=message]").val();
-        var time = $("input[name=time]").val();
+        var name = $("#omn1-task-name_msg").val();
+        var type = $("#omn1-task-type_msg").val();
+        var time = $("#omn1-task-time_msg").val();
+        var message = $("#omn1-task-content_msg").val();
+        var phone_name = $("#omn1-task-phone_name_msg").val();
         payload['arguments'].execute.inArguments =
             {
-                title: title,
+                name: name,
+                type: type,
+                time: time,
                 message: message,
-                time: time
+                phone_name: phone_name
             };
         payload['metaData'].isConfigured = true;
         connection.trigger('updateActivity', payload);
@@ -83,9 +87,13 @@ define(['postmonger','jquery'], function (Postmonger,jquery) {
         // const title = inArguments.find((arg) => arg.title);
         // const message = inArguments.find((arg) => arg.message);
         // const time = inArguments.find((arg) => arg.time);
-        $("input[name=title]").val(inArguments.title);
-        $("input[name=message]").val(inArguments.message);
-        $("input[name=time]").val(inArguments.time);        
+
+        $("#omn1-task-name_msg").val(inArguments.name);
+        $("#omn1-task-type_msg").val(inArguments.type);
+        $("#omn1-task-time_msg").val(inArguments.time);
+        $("#omn1-task-content_msg").val(inArguments.message);
+        $("#omn1-task-phone_name_msg").val(inArguments.phone_name);
+
     };
 
 
