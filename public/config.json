@@ -39,7 +39,7 @@
     
     "configurationArguments":
     {
-        "applicationExtensionKey": "<APP EXTENSION KEY>",
+        // "applicationExtensionKey": "<APP EXTENSION KEY>",
         "save":
         {
             "url": "https://omn1.herokuapp.com/journeybuilder/save",
@@ -70,7 +70,7 @@
         "configModal": {
             "height": 400,
             "width": 800,
-            "fullscreen": true
+            "fullscreen": false
         }
     },
     "schema": 
