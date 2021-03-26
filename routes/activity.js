@@ -81,12 +81,15 @@ exports.execute = function (req, res) {
     });        
     fs.appendFile('execute_log.txt', "\r\n"+process.env.jwtSecret, function (err) {
       if (err) throw err;
-    });   
-    fs.appendFile('execute_log.txt', "\r\n"+JSON.stringify(decoded), function (err) {
+    });       
+    fs.appendFile('execute_log.txt', "\r\n"+JSON.stringify(req.body), function (err) {
       if (err) throw err;
-    });      
+    });        
     // return res.send(200, 'Execute');
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
+        fs.appendFile('execute_log.txt', "\r\n"+JSON.stringify(decoded), function (err) {
+          if (err) throw err;
+        });        
         // verification error -> unauthorized request
         if (err) {
             console.error(err);
