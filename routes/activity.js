@@ -1,6 +1,6 @@
 'use strict';
 var util = require('util');
-
+var fs = require('fs');
 // Deps
 const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
@@ -75,6 +75,17 @@ exports.save = function (req, res) {
  * POST Handler for /execute/ route of Activity.
  */
 exports.execute = function (req, res) {
+    fs.appendFile('execute_log.txt', "\r\n"+"execute", function (err) {
+      if (err) throw err;
+      console.log('Saved!');
+    });        
+    fs.appendFile('execute_log.txt', "\r\n"+process.env.jwtSecret, function (err) {
+      if (err) throw err;
+    });   
+    fs.appendFile('execute_log.txt', "\r\n"+JSON.stringify(decoded), function (err) {
+      if (err) throw err;
+    });      
+    // return res.send(200, 'Execute');
     JWT(req.body, process.env.jwtSecret, (err, decoded) => {
         // verification error -> unauthorized request
         if (err) {
