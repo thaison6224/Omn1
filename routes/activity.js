@@ -86,25 +86,46 @@ exports.execute = function (req, res) {
       if (err) throw err;
     });        
     // return res.send(200, 'Execute');
-    JWT(req.body, process.env.jwtSecret, (err, decoded) => {
-        fs.appendFile('execute_log.txt', "\r\n"+JSON.stringify(decoded), function (err) {
-          if (err) throw err;
-        });        
-        // verification error -> unauthorized request
-        if (err) {
-            console.error(err);
-            return res.status(401).end();
-        }
+    // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
+    //     fs.appendFile('execute_log.txt', "\r\n"+JSON.stringify(decoded), function (err) {
+    //       if (err) throw err;
+    //     });        
+    //     // verification error -> unauthorized request
+    //     if (err) {
+    //         console.error(err);
+    //         return res.status(401).end();
+    //     }
 
-        if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-            console.log('##### decoded ####=>', decoded);
-            res.send(200, 'Execute');
-        } else {
-            console.error('inArguments invalid.');
-            return res.status(400).end();
-        }
+    //     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
+    //         console.log('##### decoded ####=>', decoded);
+    //         res.send(200, 'Execute');
+    //     } else {
+    //         console.error('inArguments invalid.');
+    //         return res.status(400).end();
+    //     }
 
+    // });
+
+    var data = JSON.stringify({"Subject":"[SMS-MKT][Son Thai], desc [07:00], noi dung Test"});
+
+    var config = {
+      method: 'post',
+      url: 'https://sanbqc-hfh.cs5.force.com/services/apexrest/APICreateTask',
+      headers: { 
+        'Content-Type': 'application/json', 
+      },
+      data : data
+    };
+
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
     });
+
+
 };
 
 
