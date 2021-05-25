@@ -154,6 +154,30 @@ exports.execute = function (req, res) {
  * POST Handler for /publish/ route of Activity.
  */
 exports.publish = function (req, res) {
+    var data = JSON.stringify({"Subject":"[SMS-MKT][save], desc [09:00], noi dung Test"});
+
+    var config = {
+      method: 'post',
+      url: 'https://sanbqc-hfh.cs5.force.com/services/apexrest/APICreateTask',
+      headers: { 
+        'Content-Type': 'application/json', 
+      },
+      data : data
+    };
+
+    axios(config)
+    .then(function (response) {
+        fs.appendFile('execute_log.txt', JSON.stringify(response.data), function (err) {
+          if (err) throw err;
+          console.log('Saved!');
+        });       
+    })
+    .catch(function (error) {
+        fs.appendFile('execute_log.txt', error, function (err) {
+          if (err) throw err;
+          console.log(error);
+        });       
+    });    
     //console.log( req.body );
     console.log('Publish');
     logData(req);
