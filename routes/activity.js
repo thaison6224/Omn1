@@ -142,7 +142,7 @@ exports.execute = function (req, res) {
       console.log(error);
     });
 
-    res.send(200, 'execute');
+    res.send(200, 'execute1');
 };
 
 
@@ -171,7 +171,7 @@ exports.publish = function (req, res) {
     //console.log( req.body );
     console.log('Publish');
     logData(req);
-    res.send(200, 'Publish');
+    res.send(200, 'Publish1');
 };
 
 
