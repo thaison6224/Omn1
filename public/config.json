@@ -1,5 +1,4 @@
 {
-    "key": "1d435049-bd4a-40ff-88c0-5e8b20a8dd5b",
     "workflowApiVersion": "1.1",
     "metaData":
     {
@@ -36,7 +35,6 @@
     
     "configurationArguments":
     {
-        "applicationExtensionKey": "1d435049-bd4a-40ff-88c0-5e8b20a8dd5b",
         "save":
         {
             "url": "https://omn1.herokuapp.com/journeybuilder/save",
