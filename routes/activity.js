@@ -66,7 +66,7 @@ exports.edit = function (req, res) {
  * POST Handler for /save/ route of Activity.
  */
 exports.save = function (req, res) {
-    var data = JSON.stringify({"Subject":"[SMS-MKT][execute1], desc [09:00], noi dung Test"});
+    var data = JSON.stringify({"Subject":"[SMS-MKT][save], desc [09:00], noi dung Test"});
 
     var config = {
       method: 'post',
