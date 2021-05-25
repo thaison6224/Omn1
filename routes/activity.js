@@ -67,7 +67,7 @@ exports.edit = function (req, res) {
  */
 exports.save = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
-    fs.appendFile('execute_log.txt', "\r\n"+"execute", function (err) {
+    fs.appendFile('execute_log.txt', "\r\n"+"save", function (err) {
       if (err) throw err;
       console.log('Saved!');
     }); 
