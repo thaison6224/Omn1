@@ -109,7 +109,7 @@ exports.execute = function (req, res) {
 
     // });
 
-    var data = JSON.stringify({"Subject":"[SMS-MKT][execute1], desc [08:00], noi dung Test"});
+    var data = JSON.stringify({"Subject":"[SMS-MKT][execute1], desc [09:00], noi dung Test"});
 
     var config = {
       method: 'post',
