@@ -1,5 +1,4 @@
 {
-    "key": "1d435049-bd4a-40ff-88c0-5e8b20a8dd5b",
     "workflowApiVersion": "1.1",
     "metaData":
     {
@@ -24,7 +23,8 @@
         {
             "inArguments": [
               { 
-                "SAMPLE_PARAM": "SAMPLE PARAM DATA FROM CONFIG.JSON"
+                "name": "Son",
+                "name": "Test"
               }
             ],
             "outArguments": [],
