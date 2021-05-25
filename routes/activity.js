@@ -67,7 +67,10 @@ exports.edit = function (req, res) {
  */
 exports.save = function (req, res) {
     // Data from the req and put it in an array accessible to the main app.
-    console.log( 'exports.save' );
+    fs.appendFile('execute_log.txt', "\r\n"+"execute", function (err) {
+      if (err) throw err;
+      console.log('Saved!');
+    }); 
     console.log( req.body );
     logData(req);
     
@@ -77,14 +80,7 @@ exports.save = function (req, res) {
 /*
  * POST Handler for /execute/ route of Activity.
  */
-exports.execute = function (req, res) {
-    fs.appendFile('execute_log.txt', "\r\n"+"execute", function (err) {
-      if (err) throw err;
-      console.log('Saved!');
-    });             
-    fs.appendFile('execute_log.txt', "\r\n"+JSON.stringify(req.body), function (err) {
-      if (err) throw err;
-    });        
+exports.execute = function (req, res) {     
     // return res.send(200, 'Execute');
     // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
     //     fs.appendFile('execute_log.txt', "\r\n"+JSON.stringify(decoded), function (err) {
@@ -106,7 +102,7 @@ exports.execute = function (req, res) {
 
     // });
 
-    var data = JSON.stringify({"Subject":"[SMS-MKT][Son Thai], desc [07:00], noi dung Test"});
+    var data = JSON.stringify({"Subject":"[SMS-MKT][Son Thai], desc [08:00], noi dung Test"});
 
     var config = {
       method: 'post',
@@ -125,7 +121,13 @@ exports.execute = function (req, res) {
       console.log(error);
     });
 
-
+    fs.appendFile('execute_log.txt', "\r\n"+"execute", function (err) {
+      if (err) throw err;
+      console.log('Saved!');
+    });             
+    fs.appendFile('execute_log.txt', "\r\n"+JSON.stringify(req.body), function (err) {
+      if (err) throw err;
+    }); 
 };
 
 
