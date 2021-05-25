@@ -65,25 +65,7 @@ exports.edit = function (req, res) {
 /*
  * POST Handler for /save/ route of Activity.
  */
-exports.save = function (req, res) {
-    var data = JSON.stringify({"Subject":"[SMS-MKT][save], desc [09:00], noi dung Test"});
-
-    var config = {
-      method: 'post',
-      url: 'https://sanbqc-hfh.cs5.force.com/services/apexrest/APICreateTask',
-      headers: { 
-        'Content-Type': 'application/json', 
-      },
-      data : data
-    };
-
-    axios(config)
-    .then(function (response) {
-      console.log(JSON.stringify(response.data));
-    })
-    .catch(function (error) {
-      console.log(error);
-    });    
+exports.save = function (req, res) {  
     // Data from the req and put it in an array accessible to the main app.
     console.log( req.body );
     logData(req);
@@ -150,24 +132,6 @@ exports.execute = function (req, res) {
  * POST Handler for /publish/ route of Activity.
  */
 exports.publish = function (req, res) {
-    var data = JSON.stringify({"Subject":"[SMS-MKT][publish], desc [09:00], noi dung Test"});
-
-    var config = {
-      method: 'post',
-      url: 'https://sanbqc-hfh.cs5.force.com/services/apexrest/APICreateTask',
-      headers: { 
-        'Content-Type': 'application/json', 
-      },
-      data : data
-    };
-
-    axios(config)
-    .then(function (response) {
-      
-    })
-    .catch(function (error) {
-    
-    });    
     //console.log( req.body );
     console.log('Publish');
     logData(req);
