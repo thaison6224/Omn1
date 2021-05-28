@@ -63,7 +63,7 @@ define([
                 }
 
                 if (key === 'phone_name') {
-                    $('##omn1-task-phone_name_msg').val(val);
+                    $('#omn1-task-phone_name_msg').val(val);
                 }                                                               
 
             })
