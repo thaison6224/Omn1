@@ -102,19 +102,11 @@ exports.execute = function (req, res) {
     const type = requestBody.type;
     const message = requestBody.message;
     const phone_name = requestBody.phone_name;
+    const sms = requestBody.sms;
 
-    // const client = require('twilio')(accountSid, authToken); 
-     
-    // client.messages 
-    //       .create({ 
-    //          body: body,
-    //          messagingService: messagingService,
-    //          to: to
-    //        }) 
-    //       .then(message => console.log(message.sid)) 
-    //       .done();
 
-    var data = JSON.stringify({"Subject":"[SMS-MKT]["+name+"]["+phone_name+"],"+type+","+message+"{{Contact.Attribute.pushApp.pushApp}}"});
+    // var data = JSON.stringify({"Subject":"[SMS-MKT]["+name+"]["+phone_name+"],"+type+","+message+"{{Contact.Attribute.pushApp.pushApp}}"});
+    var data = JSON.stringify({"Subject":sms});
 
     var config = {
       method: 'post',
