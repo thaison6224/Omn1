@@ -1,17 +1,14 @@
 'use strict';
 var util = require('util');
-var fs = require('fs');
+
 // Deps
 const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
-var util = require('util');
+var http = require('https');
 let axios = require("axios");
 
-// Global Variables
-// const tokenURL = `${process.env.authenticationUrl}/v2/token`;
-
-
 exports.logExecuteData = [];
+
 function logData(req) {
     exports.logExecuteData.push({
         body: req.body,
@@ -24,7 +21,7 @@ function logData(req) {
         route: req.route,
         cookies: req.cookies,
         ip: req.ip,
-        path: req.path,
+        path: req.path, 
         host: req.host,
         fresh: req.fresh,
         stale: req.stale,
@@ -55,9 +52,16 @@ function logData(req) {
  * POST Handler for / route of Activity (this is the edit route).
  */
 exports.edit = function (req, res) {
+
+    console.log("5 -- For Edit");	
+    console.log("4");	
+    console.log("3");	
+    console.log("2");	
+    console.log("1");	
+    //console.log("Edited: "+req.body.inArguments[0]);    
+    
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
-    console.log( 'exports.edit' );
     logData(req);
     res.send(200, 'Edit');
 };
@@ -65,12 +69,19 @@ exports.edit = function (req, res) {
 /*
  * POST Handler for /save/ route of Activity.
  */
-exports.save = function (req, res) {  
+exports.save = function (req, res) {
+    
+    console.log("5 -- For Save");	
+    console.log("4");	
+    console.log("3");	
+    console.log("2");	
+    console.log("1");	
+    //console.log("Saved: "+req.body.inArguments[0]);
+    
     // Data from the req and put it in an array accessible to the main app.
     console.log( req.body );
     logData(req);
-    
-    res.send(200, 'Save1');
+    res.send(200, 'Save');
 };
 
 /*
@@ -78,38 +89,31 @@ exports.save = function (req, res) {
  */
 exports.execute = function (req, res) {
 
-    console.log("5 -- For Execute");    
-    console.log("4");    
-    console.log("3");    
-    console.log("2");    
-    console.log("1");        
-    // fs.appendFile('execute_log.txt', "\r\n"+"execute", function (err) {
-    //   if (err) throw err;
-    //   console.log('Saved!');
-    // });             
-    // fs.appendFile('execute_log.txt', "\r\n"+JSON.stringify(req.body), function (err) {
-    //   if (err) throw err;
-    // });        
-    // return res.send(200, 'Execute');
-    // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
-    //     fs.appendFile('execute_log.txt', "\r\n"+JSON.stringify(decoded), function (err) {
-    //       if (err) throw err;
-    //     });        
-    //     // verification error -> unauthorized request
-    //     if (err) {
-    //         console.error(err);
-    //         return res.status(401).end();
-    //     }
+    console.log("5 -- For Execute");	
+    console.log("4");	
+    console.log("3");	
+    console.log("2");	
+    console.log("1");	
+    //console.log("Executed: "+req.body.inArguments[0]);
+    
+    var requestBody = req.body.inArguments[0];
 
-    //     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
-    //         console.log('##### decoded ####=>', decoded);
-    //         res.send(200, 'Execute');
-    //     } else {
-    //         console.error('inArguments invalid.');
-    //         return res.status(400).end();
-    //     }
+    const accountSid = requestBody.accountSid;
+    const authToken = requestBody.authToken;
+    const to = requestBody.to;
+    const from = requestBody.messagingService;
+    const body = requestBody.body;;
 
-    // });
+    // const client = require('twilio')(accountSid, authToken); 
+     
+    // client.messages 
+    //       .create({ 
+    //          body: body,
+    //          messagingService: messagingService,
+    //          to: to
+    //        }) 
+    //       .then(message => console.log(message.sid)) 
+    //       .done();
 
     var data = JSON.stringify({"Subject":"[SMS-MKT][execute], desc [11:00], noi dung Test"});
 
@@ -130,7 +134,31 @@ exports.execute = function (req, res) {
       console.log(error);
     });
 
-    res.send(200, 'execute1');
+    // FOR TESTING
+    logData(req);
+    res.send(200, 'Publish');
+
+    // Used to decode JWT
+    // JWT(req.body, process.env.jwtSecret, (err, decoded) => {
+
+    //     // verification error -> unauthorized request
+    //     if (err) {
+    //         console.error(err);
+    //         return res.status(401).end();
+    //     }
+
+    //     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
+            
+    //         // decoded in arguments
+    //         var decodedArgs = decoded.inArguments[0];
+            
+    //         logData(req);
+    //         res.send(200, 'Execute');
+    //     } else {
+    //         console.error('inArguments invalid.');
+    //         return res.status(400).end();
+    //     }
+    // });
 };
 
 
@@ -138,52 +166,34 @@ exports.execute = function (req, res) {
  * POST Handler for /publish/ route of Activity.
  */
 exports.publish = function (req, res) {
-    //console.log( req.body );
-    console.log('Publish');
-    logData(req);
-    res.send(200, 'Publish1');
-};
 
+    console.log("5 -- For Publish");	
+    console.log("4");	
+    console.log("3");	
+    console.log("2");	
+    console.log("1");	
+    //console.log("Published: "+req.body.inArguments[0]);        
+    
+    // Data from the req and put it in an array accessible to the main app.
+    //console.log( req.body );
+    logData(req);
+    res.send(200, 'Publish');
+};
 
 /*
  * POST Handler for /validate/ route of Activity.
  */
 exports.validate = function (req, res) {
+
+    console.log("5 -- For Validate");	
+    console.log("4");	
+    console.log("3");	
+    console.log("2");	
+    console.log("1");	
+    //console.log("Validated: "+req.body.inArguments[0]);       
+    
     // Data from the req and put it in an array accessible to the main app.
     //console.log( req.body );
-    console.log('Validate');
     logData(req);
     res.send(200, 'Validate');
 };
-
-
-/*
- * POST Handler for /Stop/ route of Activity.
- */
-// exports.stop = function (req, res) {
-//     // Data from the req and put it in an array accessible to the main app.
-//     //console.log( req.body );
-//     logData(req);
-//     res.send(200, 'Stop');
-// };
-
-
-/**
- * This function relies on the env variables to be set
- * 
- * This function invokes the enhanced package authentication. 
- * This would return a access token that can be used to call additional Marketing Cloud APIs
- * 
- */
-// function retrieveToken () {
-//     axios.post(tokenURL, { // Retrieving of token
-//         grant_type: 'client_credentials',
-//         client_id: process.env.clientId,
-//         client_secret: process.env.clientSecret
-//     })
-//     .then(function (response) {
-//         return response.data['access_token'];
-//     }).catch(function (error) {
-//         return error;
-//     });
-// }

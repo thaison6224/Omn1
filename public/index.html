@@ -1,266 +1,60 @@
 <!DOCTYPE html>
-<html style="background-color: #fff;">
 
+<html lang="en">
 <head>
-    <title>JOURNEY BUILDER APP TEMPLATE</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie-edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="assets/styles/salesforce-lightning-design-system.css" >
-    <link rel='stylesheet' href="fonts/SalesforceSans-Bold.ttf">
-    <link rel='stylesheet' href="css/styles.css">
-    
+    <meta charset="utf-8">
+    <title>TESTING: Custom Journey Builder Activity</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/require.js"></script>
     <script type="text/javascript">
         (function() {
             var config = {
                 baseUrl: 'js'
             };
+
             var dependencies = [
                 'customActivity'
             ];
-            require(config, dependencies);
+
+            require(config, dependencies); 
         })();
     </script>
+
+    <!--Styles-->
+    <style type="text/css">
+        body {
+            padding: 20px;
+            margin: 0;
+        }
+        #step1 {
+            display: block;
+        }
+    </style>
+
 </head>
-
-
 <body>
-    <div class="slds-box">
-    <article class="slds-card">
-      <div class="slds-card__header slds-grid">
-        <header class="slds-media slds-media_center slds-has-flexi-truncate">
-          <div class="slds-media__figure">
-            <span class="slds-icon_container slds-icon-standard-account" title="account">
-              <svg class="slds-icon slds-icon_small" aria-hidden="true">
-                <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
-              </svg>
-              <span class="slds-assistive-text">OMN1 Send SMS Message</span>
-            </span>
-          </div>
-          <div class="slds-media__body">
-            <h2 class="slds-card__header-title">
-              <a href="#" class="slds-card__header-link slds-truncate" title="OMN1 Send SMS Message">
-                <span>OMN1 Send SMS Message</span>
-              </a>
-            </h2>
-          </div>
-        </header>
-      </div>
-      <div class="slds-card__body slds-card__body_inner">
+<div id="step1" class="step">
+    <h2>Create a Twilio SMS message:</h2>
+    <p>Twilio's Programmable SMS has the features you’ll need to build quickly and scale to production. We’ve solved the hard problems so you don’t have to.  <a href="https://www.twilio.com/sms" target="_blank">Learn more about about Twilio SMS here</a>.</p>
+    <hr>
+    <div class="form-group">
+        <div><label for="messageBody">Create message body:</label></div>
+        <input class="form-control" id="messageBody" type="text" name="messageBody" value="">        
+    </div>           
+    <div class="form-group">
+        <div><label for="messagingService">Messaging Service SID:</label></div>
+        <input class="form-control" id="messagingService" type="text" name="messagingService" value="">
+    </div>     
+    <div class="form-group">
+        <div><label for="accountSID">Account SID:</label></div>
+        <input class="form-control" id="accountSID" type="text" name="accountSID" value="">
+    </div>
+    <div class="form-group">
+        <div><label for="authToken">Auth Token:</label></div>
+        <input class="form-control" id="authToken" type="text" name="authToken" value="">
+    </div>    
 
-        <div class="slds-grid slds-gutters slds-wrap">
-          <div class="slds-col slds-size_2-of-4">
-            <div class="slds-form-element">
-              <label class="slds-form-element__label" for="omn1-task-name_msg">
-                <abbr class="slds-required" title="required">* </abbr>Tên message</label>
-              <div class="slds-form-element__control">
-                <input type="text" id="omn1-task-name_msg" required="" class="slds-input" />
-              </div>
-            </div>             
-          </div>
-          <div class="slds-col slds-size_2-of-4">
-            <div class="slds-form-element">
-              <label class="slds-form-element__label" for="omn1-task-type_msg">Loại message</label>
-              <div class="slds-form-element__control">
-                <div class="slds-select_container">
-                  <select class="slds-select" id="omn1-task-type_msg">
-                    <option value="">Select…</option>
-                    <option value="MKT">Marketing</option>
-                    <option value="SVC">Service</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="slds-col slds-size_2-of-4">
-            <div class="slds-form-element">
-              <label class="slds-form-element__label" for="omn1-task-time_msg">Giờ gửi</label>
-              <div class="slds-form-element__control">
-                <div class="slds-combobox_container">
-                  <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-combobox-picklist slds-timepicker" aria-expanded="false" aria-haspopup="listbox" role="combobox">
-                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
-                      <input type="text" class="slds-input slds-combobox__input" id="omn1-task-time_msg" aria-autocomplete="list" autoComplete="off" role="textbox" placeholder=" " />
-                      <span class="slds-icon_container slds-icon-utility-clock slds-input__icon slds-input__icon_right">
-                        <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-                          <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#clock"></use>
-                        </svg>
-                      </span>
-                    </div>
-                    <div id="listbox-unique-id" role="listbox" class="slds-dropdown slds-dropdown_fluid slds-dropdown_length-5">
-                      <ul class="slds-listbox slds-listbox_vertical" role="presentation">
-                        <li role="presentation" class="slds-listbox__item">
-                          <div id="listbox-option-unique-id-01" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center" role="option">
-                            <span class="slds-media__figure">
-                              <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                              </svg>
-                            </span>
-                            <span class="slds-media__body">
-                              <span class="slds-truncate" title="6:00am"> 6:00am</span>
-                            </span>
-                          </div>
-                        </li>
-                        <li role="presentation" class="slds-listbox__item">
-                          <div id="listbox-option-unique-id-02" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center" role="option">
-                            <span class="slds-media__figure">
-                              <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                              </svg>
-                            </span>
-                            <span class="slds-media__body">
-                              <span class="slds-truncate" title="7:00am"> 7:00am</span>
-                            </span>
-                          </div>
-                        </li>
-                        <li role="presentation" class="slds-listbox__item">
-                          <div id="listbox-option-unique-id-03" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center" role="option">
-                            <span class="slds-media__figure">
-                              <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                              </svg>
-                            </span>
-                            <span class="slds-media__body">
-                              <span class="slds-truncate" title="8:00am"> 8:00am</span>
-                            </span>
-                          </div>
-                        </li>
-                        <li role="presentation" class="slds-listbox__item">
-                          <div id="listbox-option-unique-id-04" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center" role="option">
-                            <span class="slds-media__figure">
-                              <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                              </svg>
-                            </span>
-                            <span class="slds-media__body">
-                              <span class="slds-truncate" title="9:00am"> 9:00am</span>
-                            </span>
-                          </div>
-                        </li>
-                        <li role="presentation" class="slds-listbox__item">
-                          <div id="listbox-option-unique-id-05" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center" role="option">
-                            <span class="slds-media__figure">
-                              <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                              </svg>
-                            </span>
-                            <span class="slds-media__body">
-                              <span class="slds-truncate" title="10:00am"> 10:00am</span>
-                            </span>
-                          </div>
-                        </li>
-                        <li role="presentation" class="slds-listbox__item">
-                          <div id="listbox-option-unique-id-06" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center" role="option">
-                            <span class="slds-media__figure">
-                              <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                              </svg>
-                            </span>
-                            <span class="slds-media__body">
-                              <span class="slds-truncate" title="11:00am"> 11:00am</span>
-                            </span>
-                          </div>
-                        </li>
-                        <li role="presentation" class="slds-listbox__item">
-                          <div id="listbox-option-unique-id-07" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center" role="option">
-                            <span class="slds-media__figure">
-                              <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                              </svg>
-                            </span>
-                            <span class="slds-media__body">
-                              <span class="slds-truncate" title="12:00pm"> 12:00pm</span>
-                            </span>
-                          </div>
-                        </li>
-                        <li role="presentation" class="slds-listbox__item">
-                          <div id="listbox-option-unique-id-08" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center" role="option">
-                            <span class="slds-media__figure">
-                              <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                              </svg>
-                            </span>
-                            <span class="slds-media__body">
-                              <span class="slds-truncate" title="1:00pm"> 1:00pm</span>
-                            </span>
-                          </div>
-                        </li>
-                        <li role="presentation" class="slds-listbox__item">
-                          <div id="listbox-option-unique-id-09" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center" role="option">
-                            <span class="slds-media__figure">
-                              <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                              </svg>
-                            </span>
-                            <span class="slds-media__body">
-                              <span class="slds-truncate" title="2:00pm"> 2:00pm</span>
-                            </span>
-                          </div>
-                        </li>
-                        <li role="presentation" class="slds-listbox__item">
-                          <div id="listbox-option-unique-id-10" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center" role="option">
-                            <span class="slds-media__figure">
-                              <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                              </svg>
-                            </span>
-                            <span class="slds-media__body">
-                              <span class="slds-truncate" title="3:00pm"> 3:00pm</span>
-                            </span>
-                          </div>
-                        </li>
-                        <li role="presentation" class="slds-listbox__item">
-                          <div id="listbox-option-unique-id-11" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center" role="option">
-                            <span class="slds-media__figure">
-                              <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                              </svg>
-                            </span>
-                            <span class="slds-media__body">
-                              <span class="slds-truncate" title="4:00pm"> 4:00pm</span>
-                            </span>
-                          </div>
-                        </li>
-                        <li role="presentation" class="slds-listbox__item">
-                          <div id="listbox-option-unique-id-12" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center" role="option">
-                            <span class="slds-media__figure">
-                              <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                              </svg>
-                            </span>
-                            <span class="slds-media__body">
-                              <span class="slds-truncate" title="5:00pm"> 5:00pm</span>
-                            </span>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>            
-          </div>
-          <div class="slds-col slds-size_2-of-4">
-            <div class="slds-form-element">
-              <label class="slds-form-element__label" for="omn1-task-phone_name_msg">
-                <abbr class="slds-required" title="required">* </abbr>Phone fieldname</label>
-              <div class="slds-form-element__control">
-                <input type="text" id="omn1-task-phone_name_msg" required="" class="slds-input" />
-              </div>
-            </div>             
-          </div>
-          <div class="slds-col slds-size_4-of-4">
-            <div class="slds-form-element">
-              <label class="slds-form-element__label" for="omn1-task-content_msg">Nội dung message</label>
-              <div class="slds-form-element__control">
-                <textarea id="omn1-task-content_msg" placeholder="Nội dung message" class="slds-textarea"></textarea>
-              </div>
-            </div>            
-          </div>
-        </div>
-      </div>
-    </article>   
-    </div> 
+</div>
 </body>
-
 </html>

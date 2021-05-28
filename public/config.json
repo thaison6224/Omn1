@@ -1,84 +1,83 @@
 {
     "workflowApiVersion": "1.1",
-    "metaData":
-    {
-        "icon": "images/icon.png",
-        "iconSmall": "images/iconSmall.png",
-        "category": "message"
+    "metaData": {
+       "icon": "images/iconSmall.png",
+       "category": "message"
     },
-
     "type": "REST",
-    "lang":
-    {
-        "en-US":
-        {
+    "lang": {
+       "en-US": {
             "name": "Send SMS",
             "description": "OMN1 Send SMS Message",
             "step1Label": "Configure Activity"
-        }
+       }
     },
-    "arguments":
-    {
-        "execute":
-        {
+    "arguments": {
+        "execute": {
             "inArguments": [
-              { 
-                "name": "Son",
-                "name": "Test"
-              }
+                {
+                  "email": "s@s.com"
+                }               
             ],
             "outArguments": [],
             "url": "https://omn1.herokuapp.com/journeybuilder/execute",
             "verb": "POST",
             "body": "",
-            "header": "",
             "format": "json",
             "useJwt": false,
             "timeout": 2000
         }
     },
-    
-    "configurationArguments":
-    {
-        "applicationExtensionKey": "03091b29-a1a1-4721-a8b0-002553f904f9",
-        "save":
-        {
-            "url": "https://omn1.herokuapp.com/journeybuilder/save",
+    "configurationArguments": {
+      "applicationExtensionKey": "03091b29-a1a1-4721-a8b0-002553f904f9",
+       "save": {
+           "url": "https://omn1.herokuapp.com/journeybuilder/save",
             "verb": "POST",
-            "useJwt": false
-        },
-        "publish":
-        {
-            "url": "https://omn1.herokuapp.com/journeybuilder/publish",
+            "body": "",
+            "format": "json",
+            "useJwt": false,
+            "timeout": 2000
+       },
+       "publish": {
+           "url": "https://omn1.herokuapp.com/journeybuilder/publish",
             "verb": "POST",
-            "useJwt": false
-        },
-        "stop":
-        {
-            "url": "https://omn1.herokuapp.com/journeybuilder/stop",
+            "body": "",
+            "format": "json",
+            "useJwt": false,
+            "timeout": 2000
+       },
+       "validate": {
+           "url": "https://omn1.herokuapp.com/journeybuilder/validate",
             "verb": "POST",
-            "useJwt": false
-        },
-        "validate":
-        {
-            "url": "https://omn1.herokuapp.com/journeybuilder/validate",
+            "body": "",
+            "format": "json",
+            "useJwt": false,
+            "timeout": 2000
+       },
+       "stop": {
+           "url": "https://omn1.herokuapp.com/journeybuilder/stop",
             "verb": "POST",
-            "useJwt": false
-        }
+            "body": "",
+            "format": "json",
+            "useJwt": false,
+            "timeout": 2000
+       }
     },
-    "userInterfaces":
-    {
-        "configModal": {
-            "height": 400,
-            "width": 800,
-            "fullscreen": false
-        }
+    "wizardSteps": [
+       { "label": "Create SMS Message", "key": "step1" }
+    ],
+    "userInterfaces": {
+       "configModal": {
+           "height": 600,
+           "width": 800,
+           "fullscreen": false
+       }
     },
-    "schema": 
-    {
-        "arguments":{
+    "schema": {
+        "arguments": {
             "execute": {
-                "inArguments": [],
+                "inArguments": [
+                ],
                 "outArguments": []
             }
         }
