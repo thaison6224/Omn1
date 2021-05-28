@@ -21,6 +21,7 @@ app.use(bodyParser.json({type: 'application/json'}));
 //app.use(express.favicon());
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/assets', express.static(path.join(__dirname, '/node_modules/@salesforce-ux/design-system/assets')));
 
 // Express in Development Mode
 if ('development' == app.get('env')) {
