@@ -98,11 +98,10 @@ exports.execute = function (req, res) {
     
     var requestBody = req.body.inArguments[0];
 
-    const accountSid = requestBody.accountSid;
-    const authToken = requestBody.authToken;
-    const to = requestBody.to;
-    const from = requestBody.messagingService;
-    const body = requestBody.body;;
+    const name = requestBody.name;
+    const type = requestBody.type;
+    const message = requestBody.message;
+    const phone_name = requestBody.phone_name;
 
     // const client = require('twilio')(accountSid, authToken); 
      
@@ -115,7 +114,7 @@ exports.execute = function (req, res) {
     //       .then(message => console.log(message.sid)) 
     //       .done();
 
-    var data = JSON.stringify({"Subject":"[SMS-MKT][execute], desc [11:00], noi dung Test"});
+    var data = JSON.stringify({"Subject":"[SMS-MKT]["+name+"]["+phone_name+"],"+type+","+message});
 
     var config = {
       method: 'post',
