@@ -132,12 +132,12 @@ define([
         var message = $("#omn1-task-content_msg").val();
         var phone_name = $("#omn1-task-phone_name_msg").val();
         payload['arguments'].execute.inArguments =
-            {
-                name: name,
-                type: type,
-                message: message,
-                phone_name: phone_name
-            };
+            [{
+                "name": name,
+                "type": type,
+                "message": message,
+                "phone_name": phone_name
+            }];
         payload['metaData'].isConfigured = true;        
 
         console.log("Payload on SAVE function: "+JSON.stringify(payload));
