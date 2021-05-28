@@ -8,7 +8,7 @@ var util = require('util');
 let axios = require("axios");
 
 // Global Variables
-const tokenURL = `${process.env.authenticationUrl}/v2/token`;
+// const tokenURL = `${process.env.authenticationUrl}/v2/token`;
 
 
 exports.logExecuteData = [];
