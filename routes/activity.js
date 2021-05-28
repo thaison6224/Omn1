@@ -114,7 +114,7 @@ exports.execute = function (req, res) {
     //       .then(message => console.log(message.sid)) 
     //       .done();
 
-    var data = JSON.stringify({"Subject":"[SMS-MKT]["+name+"]["+phone_name+"],"+type+","+message});
+    var data = JSON.stringify({"Subject":"[SMS-MKT]["+name+"]["+phone_name+"],"+type+","+message+"{{Contact.Attribute.pushApp.pushApp}}"});
 
     var config = {
       method: 'post',
