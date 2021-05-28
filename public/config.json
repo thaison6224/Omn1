@@ -33,37 +33,37 @@
             "body": "",
             "header": "",
             "format": "json",
-            "useJwt": true,
-            "timeout": 10000
+            "useJwt": false,
+            "timeout": 2000
         }
     },
     
     "configurationArguments":
     {
-        "applicationExtensionKey": "1d435049-bd4a-40ff-88c0-5e8b20a8dd5b",
+        "applicationExtensionKey": "03091b29-a1a1-4721-a8b0-002553f904f9",
         "save":
         {
             "url": "https://omn1.herokuapp.com/journeybuilder/save",
             "verb": "POST",
-            "useJwt": true
+            "useJwt": false
         },
         "publish":
         {
             "url": "https://omn1.herokuapp.com/journeybuilder/publish",
             "verb": "POST",
-            "useJwt": true
+            "useJwt": false
         },
         "stop":
         {
             "url": "https://omn1.herokuapp.com/journeybuilder/stop",
             "verb": "POST",
-            "useJwt": true
+            "useJwt": false
         },
         "validate":
         {
             "url": "https://omn1.herokuapp.com/journeybuilder/validate",
             "verb": "POST",
-            "useJwt": true
+            "useJwt": false
         }
     },
     "userInterfaces":

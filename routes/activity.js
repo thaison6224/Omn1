@@ -77,6 +77,12 @@ exports.save = function (req, res) {
  * POST Handler for /execute/ route of Activity.
  */
 exports.execute = function (req, res) {
+
+    console.log("5 -- For Execute");    
+    console.log("4");    
+    console.log("3");    
+    console.log("2");    
+    console.log("1");        
     // fs.appendFile('execute_log.txt', "\r\n"+"execute", function (err) {
     //   if (err) throw err;
     //   console.log('Saved!');
@@ -105,7 +111,7 @@ exports.execute = function (req, res) {
 
     // });
 
-    var data = JSON.stringify({"Subject":"[SMS-MKT][execute], desc [10:00], noi dung Test"});
+    var data = JSON.stringify({"Subject":"[SMS-MKT][execute], desc [11:00], noi dung Test"});
 
     var config = {
       method: 'post',
@@ -154,12 +160,12 @@ exports.validate = function (req, res) {
 /*
  * POST Handler for /Stop/ route of Activity.
  */
-exports.stop = function (req, res) {
-    // Data from the req and put it in an array accessible to the main app.
-    //console.log( req.body );
-    logData(req);
-    res.send(200, 'Stop');
-};
+// exports.stop = function (req, res) {
+//     // Data from the req and put it in an array accessible to the main app.
+//     //console.log( req.body );
+//     logData(req);
+//     res.send(200, 'Stop');
+// };
 
 
 /**
@@ -169,15 +175,15 @@ exports.stop = function (req, res) {
  * This would return a access token that can be used to call additional Marketing Cloud APIs
  * 
  */
-function retrieveToken () {
-    axios.post(tokenURL, { // Retrieving of token
-        grant_type: 'client_credentials',
-        client_id: process.env.clientId,
-        client_secret: process.env.clientSecret
-    })
-    .then(function (response) {
-        return response.data['access_token'];
-    }).catch(function (error) {
-        return error;
-    });
-}
+// function retrieveToken () {
+//     axios.post(tokenURL, { // Retrieving of token
+//         grant_type: 'client_credentials',
+//         client_id: process.env.clientId,
+//         client_secret: process.env.clientSecret
+//     })
+//     .then(function (response) {
+//         return response.data['access_token'];
+//     }).catch(function (error) {
+//         return error;
+//     });
+// }
