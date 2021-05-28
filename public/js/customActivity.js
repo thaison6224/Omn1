@@ -35,40 +35,39 @@ define([
         if (data) {
             payload = data;
         }   
-        initialLoad(data); 
 
-        // var hasInArguments = Boolean(
-        //     payload['arguments'] &&
-        //     payload['arguments'].execute &&
-        //     payload['arguments'].execute.inArguments &&
-        //     payload['arguments'].execute.inArguments.length > 0
-        //  );
+        var hasInArguments = Boolean(
+            payload['arguments'] &&
+            payload['arguments'].execute &&
+            payload['arguments'].execute.inArguments &&
+            payload['arguments'].execute.inArguments.length > 0
+         );
 
-        // var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
+        var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
-        // console.log('Has In arguments: '+JSON.stringify(inArguments));
+        console.log('Has In arguments: '+JSON.stringify(inArguments));
 
-        // $.each(inArguments, function (index, inArgument) {
-        //     $.each(inArgument, function (key, val) {
+        $.each(inArguments, function (index, inArgument) {
+            $.each(inArgument, function (key, val) {
 
-        //         if (key === 'accountSid') {
-        //             $('#accountSID').val(val);
-        //         }
+                if (key === 'name') {
+                    $('#omn1-task-name_msg').val(val);
+                }
 
-        //         if (key === 'authToken') {
-        //             $('#authToken').val(val);
-        //         }
+                if (key === 'type') {
+                    $('#omn1-task-type_msg').val(val);
+                }
 
-        //         if (key === 'messagingService') {
-        //             $('#messagingService').val(val);
-        //         }
+                if (key === 'message') {
+                    $('#omn1-task-content_msg').val(val);
+                }
 
-        //         if (key === 'body') {
-        //             $('#messageBody').val(val);
-        //         }                                                               
+                if (key === 'phone_name') {
+                    $('##omn1-task-phone_name_msg').val(val);
+                }                                                               
 
-        //     })
-        // });
+            })
+        });
 
         connection.trigger('updateButton', {
             button: 'next',
@@ -76,28 +75,7 @@ define([
             visible: true
         });
 
-    }
-
-    function initialLoad(data) {
-        console.log(data);
-        let activity = data;
-        const hasInArguments = Boolean(
-            activity.arguments &&
-            activity.arguments.execute &&
-            activity.arguments.execute.inArguments 
-        );        
-        const inArguments = hasInArguments ? activity.arguments.execute.inArguments : {};
-        console.log(inArguments);
-        // const title = inArguments.find((arg) => arg.title);
-        // const message = inArguments.find((arg) => arg.message);
-        // const time = inArguments.find((arg) => arg.time);
-
-        $("#omn1-task-name_msg").val(inArguments.name);
-        $("#omn1-task-type_msg").val(inArguments.type);
-        $("#omn1-task-content_msg").val(inArguments.message);
-        $("#omn1-task-phone_name_msg").val(inArguments.phone_name);
-
-    };    
+    } 
 
     function onGetTokens (tokens) {
         // Response: tokens = { token: <legacy token>, fuel2token: <fuel api token> }
