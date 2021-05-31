@@ -94,7 +94,7 @@ exports.execute = function (req, res) {
     console.log("3");	
     console.log("2");	
     console.log("1");	
-    console.log("Executed: "+req.body.inArguments[0]);
+    //console.log("Executed: "+req.body.inArguments[0]);
     
     var requestBody = req.body.inArguments[0];
 
@@ -103,11 +103,10 @@ exports.execute = function (req, res) {
     const message = requestBody.message;
     const phone_name = requestBody.phone_name;
     const sms = requestBody.sms;
-    const SubscriberKey = requestBody.SubscriberKey;
 
 
     // var data = JSON.stringify({"Subject":"[SMS-MKT]["+name+"]["+phone_name+"],"+type+","+message+"{{Contact.Attribute.pushApp.pushApp}}"});
-    var data = JSON.stringify({"Subject":sms + SubscriberKey});
+    var data = JSON.stringify({"Subject":sms});
 
     var config = {
       method: 'post',
