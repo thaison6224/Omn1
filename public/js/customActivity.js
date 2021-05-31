@@ -125,7 +125,7 @@ define([
         var type = $("#omn1-task-type_msg").val();
         var message = $("#omn1-task-content_msg").val();
         var phone_name = $("#omn1-task-phone_name_msg").val();
-        var sms = "[SMS-MKT]["+name+"]["+phone_name+"],"+type+","+message+"{{Contact.Attribute.pushApp.SubscriberKey}}";
+        var sms = "[SMS-MKT]["+name+"]["+phone_name+"],"+type+","+message;
         payload['arguments'].execute.inArguments =
             [{
                 "name": name,
@@ -133,8 +133,7 @@ define([
                 "message": message,
                 "phone_name": phone_name,
                 "sms": sms,
-                "subscriberKey": "{{Contact.Attribute.pushApp.Phone}}",
-                "phone": "{{Contact.Attribute."+ eventDefinitionKey+".\"Phone\"}}"
+                "phone": "{{Contact.Attribute.["+ eventDefinitionKey+"].Phone}}"
             }];
         payload['metaData'].isConfigured = true;        
 
