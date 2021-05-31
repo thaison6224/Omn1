@@ -103,11 +103,10 @@ exports.execute = function (req, res) {
     const message = requestBody.message;
     const phone_name = requestBody.phone_name;
     const sms = requestBody.sms;
-    const phone = requestBody.phone;
 
 
     // var data = JSON.stringify({"Subject":"[SMS-MKT]["+name+"]["+phone_name+"],"+type+","+message+"{{Contact.Attribute.pushApp.pushApp}}"});
-    var data = JSON.stringify({"Subject":sms + phone});
+    var data = JSON.stringify({"Subject":sms});
 
     var config = {
       method: 'post',

@@ -116,7 +116,11 @@ define([
         var type = $("#omn1-task-type_msg").val();
         var message = $("#omn1-task-content_msg").val();
         var phone_name = $("#omn1-task-phone_name_msg").val();
-        var sms = "[SMS-MKT]["+name+"]["+time+"]["+"{{Contact.Attribute.\"Omn1 Push\".\""+phone_name+"\"}}"+"],"+type+","+message;
+        var message_out = message;
+        message_out = message_out.replace(/\%\%(.+?)\%\%/g, "{{Contact.Attribute.\"Omn1 Push\".\"$1\"}}")
+        var name_out = name;
+        name_out = name_out.replace(/\%\%(.+?)\%\%/g, "{{Contact.Attribute.\"Omn1 Push\".\"$1\"}}")        
+        var sms = "[SMS-MKT]["+name_out+"]["+time+"]["+"{{Contact.Attribute.\"Omn1 Push\".\""+phone_name+"\"}}"+"],"+type+","+message_out;
         payload['arguments'].execute.inArguments =
             [{
                 "name": name,
