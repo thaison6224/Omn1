@@ -111,17 +111,18 @@ define([
 
     function save() {
         // var DE = "Omn1 Push";
-        var DE = "DEAudience-3c10b0c1-caa3-a5e0-58d9-ec86170b925f";
+        // var DE = "DEAudience-3c10b0c1-caa3-a5e0-58d9-ec86170b925f";
+        var DE = "Event."+eventDefinitionKey;
         var name = $("#omn1-task-name_msg").val();
         var time = $("#omn1-task-time_msg").val();
         var type = $("#omn1-task-type_msg").val();
         var message = $("#omn1-task-content_msg").val();
         var phone_name = $("#omn1-task-phone_name_msg").val();
         var message_out = message;
-        message_out = message_out.replace(/\%\%(.+?)\%\%/g, "{{Contact.Attribute.\""+DE+"\".\"$1\"}}")
+        message_out = message_out.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}")
         var name_out = name;
-        name_out = name_out.replace(/\%\%(.+?)\%\%/g, "{{Contact.Attribute.\""+DE+"\".\"$1\"}}")        
-        var sms = "[SMS-MKT]["+name_out+"]["+time+"]["+"{{Contact.Attribute.\""+DE+"\".\""+phone_name+"\"}}"+"],"+type+","+message_out;
+        name_out = name_out.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}")        
+        var sms = "[SMS-MKT]["+name_out+"]["+time+"]["+"{{\""+DE+"\".\""+phone_name+"\"}}"+"],"+type+","+message_out;
         payload['arguments'].execute.inArguments =
             [{
                 "name": name,
@@ -131,7 +132,6 @@ define([
                 "phone_name": phone_name,
                 "sms": sms,
                 "phone3": "{{Event.DEAudience-3c10b0c1-caa3-a5e0-58d9-ec86170b925f.Id}}"
-                // "phone": "{{Contact.Attribute.\"Omn1 Push\".\""+phone_name+"\"}}"
             }];
         payload['metaData'].isConfigured = true;        
 
