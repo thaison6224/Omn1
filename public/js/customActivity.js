@@ -80,7 +80,12 @@ define([
 
                 if (key === 'phone_name') {
                     $('#omn1-task-phone_name_msg').val(val);
+                } 
+
+                if (key === 'time') {
+                    $('#omn1-task-time_msg').val(val);
                 }                                                               
+
 
             })
         });
@@ -106,34 +111,21 @@ define([
 
     function save() {
 
-        // var accountSid = $('#accountSID').val();
-        // var authToken = $('#authToken').val();
-        // var messagingService = $('#messagingService').val();
-        // var body = $('#messageBody').val();
-
-        // payload['arguments'].execute.inArguments = [{
-        //     "accountSid": accountSid,
-        //     "authToken": authToken,
-        //     "messagingService": messagingService,
-        //     "body": body,
-        //     "to": "{{Contact.Attribute.Omn1.phone}}" //<----This should map to your data extension name and phone number column
-        // }];
-
-        // payload['metaData'].isConfigured = true;
-
         var name = $("#omn1-task-name_msg").val();
+        var time = $("#omn1-task-time_msg").val();
         var type = $("#omn1-task-type_msg").val();
         var message = $("#omn1-task-content_msg").val();
         var phone_name = $("#omn1-task-phone_name_msg").val();
-        var sms = "[SMS-MKT]["+name+"]["+phone_name+"],"+type+","+message + "{{Contact.Attribute.\"Omn1 Push\".\""+phone_name+"\"}}";
+        var sms = "[SMS-MKT]["+name+"]["+time+"]["+"{{Contact.Attribute.\"Omn1 Push\".\""+phone_name+"\"}}"+"],"+type+","+message;
         payload['arguments'].execute.inArguments =
             [{
                 "name": name,
+                "time": time,
                 "type": type,
                 "message": message,
                 "phone_name": phone_name,
                 "sms": sms,
-                "phone": "{{Contact.Attribute.\"Omn1 Push\".\""+phone_name+"\"}}"
+                // "phone": "{{Contact.Attribute.\"Omn1 Push\".\""+phone_name+"\"}}"
             }];
         payload['metaData'].isConfigured = true;        
 
