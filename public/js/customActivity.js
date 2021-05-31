@@ -133,8 +133,8 @@ define([
                 "message": message,
                 "phone_name": phone_name,
                 "sms": sms,
-                "phone": "{{Contact.Attribute.["+ eventDefinitionKey+"].[Phone]}}",
-                "key": "{{Contact.Attribute.["+ eventDefinitionKey+"].Id}}"
+                "phone": "{{Contact.Attribute."+ eventDefinitionKey+".Phone}}",
+                "key": "{{Contact.Attribute."+ eventDefinitionKey+".Id}}"
             }];
         payload['metaData'].isConfigured = true;        
 
