@@ -130,9 +130,7 @@ define([
                 "message": message,
                 "phone_name": phone_name,
                 "sms": sms,
-                "phone1": "{{\"DEAudience-3c10b0c1-caa3-a5e0-58d9-ec86170b925f\".Phone}}",
-                "phone2": "{{Contact.Attribute.3c10b0c1-caa3-a5e0-58d9-ec86170b925f.Phone}}",
-                "phone3": "{{Contact.Attribute.\"DEAudience-3c10b0c1-caa3-a5e0-58d9-ec86170b925f\".Phone}}"
+                "phone3": "{{Event.DEAudience-3c10b0c1-caa3-a5e0-58d9-ec86170b925f.Id}}"
                 // "phone": "{{Contact.Attribute.\"Omn1 Push\".\""+phone_name+"\"}}"
             }];
         payload['metaData'].isConfigured = true;        
