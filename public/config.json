@@ -16,7 +16,7 @@
         "execute": {
             "inArguments": [
                 {
-                  "email": "s@s.com"
+                  "contactIdentifier": "{{Contact.Key}}"
                 }               
             ],
             "outArguments": [],
