@@ -95,7 +95,7 @@ define([
             text: 'done',
             visible: true
         });
-
+        parseEventSchema();
     } 
 
     function onGetTokens (tokens) {
@@ -136,6 +136,34 @@ define([
         console.log("Payload on SAVE function: "+JSON.stringify(payload));
         connection.trigger('updateActivity', payload);
 
-    }                    
+    }
+
+    function parseEventSchema() {
+        // Pulling data from the schema
+        connection.trigger('requestSchema');
+        connection.on('requestedSchema', function (data) {
+            console.log('*** Schema ***', JSON.stringify(data['schema']));
+            // save schema
+            // let dataJson = data['schema'];
+            // for (let i = 0; i < dataJson.length; i++) {
+
+            //     // Last name schema and creation of event schema
+            //     // Last name is a required field in SF so this is used to pull the event schema
+            //     if (dataJson[i].key.toLowerCase().replace(/ /g, '').indexOf("lastname") !== -1) {
+            //         let splitArr = dataJson[i].key.split(".");
+            //         lastnameSchema = splitArr[splitArr.length - 1];
+            //         console.log('Last Name Schema >>', lastnameSchema);
+
+            //         let splitName = lastnameSchema.split(":");
+            //         let reg = new RegExp(splitName[splitName.length - 1], "g");
+            //         let oldSchema = splitArr[splitArr.length - 1];
+
+            //         eventSchema = oldSchema.replace(reg, "");
+            //         console.log("Event Schema >>", eventSchema);
+            //     }
+            // }
+
+        });
+    }                        
 
 });
