@@ -8,6 +8,7 @@ define([
     var connection = new Postmonger.Session();
     var payload = {};
     var lastStepEnabled = false;
+    let eventDefinitionKey;
     var steps = [ // initialize to the same value as what's set in config.json for consistency
         { "label": "Create SMS Message", "key": "step1" }
     ];
@@ -22,6 +23,21 @@ define([
     connection.on('clickedNext', save);
     //connection.on('clickedBack', onClickedBack);
     //connection.on('gotoStep', onGotoStep);
+
+    connection.trigger('requestTriggerEventDefinition');
+
+    connection.on('requestedTriggerEventDefinition',
+    function(eventDefinitionModel) {
+        if(eventDefinitionModel){
+
+            eventDefinitionKey = eventDefinitionModel.eventDefinitionKey;
+            console.log(">>>Event Definition Key " + eventDefinitionKey);
+            /*If you want to see all*/
+            console.log('>>>Request Trigger', 
+            JSON.stringify(eventDefinitionModel));
+        }
+
+    });    
 
     function onRender() {
         // JB will respond the first time 'ready' is called with 'initActivity'
@@ -118,7 +134,7 @@ define([
                 "phone_name": phone_name,
                 "sms": sms,
                 "subscriberKey": "{{Contact.Attribute.pushApp.Phone}}",
-                "phone": "{{Contact.Default.Phone}}"
+                "phone": "{{Contact.Attribute."+ eventDefinitionKey+".\"Phone\"}}"
             }];
         payload['metaData'].isConfigured = true;        
 
