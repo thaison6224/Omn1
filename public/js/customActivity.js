@@ -135,7 +135,7 @@ define([
                 "sms": sms,
                 "phone": "{{Contact.Attribute."+ eventDefinitionKey+".Phone}}",
                 "key": "{{Contact.Key}}",
-                "p1": "{{Contact.Attribute.Omn1 Push.Phone}}"
+                "p1": "{{Contact.Attribute}}"
             }];
         payload['metaData'].isConfigured = true;        
 
