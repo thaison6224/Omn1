@@ -117,7 +117,7 @@ define([
                 "message": message,
                 "phone_name": phone_name,
                 "sms": sms,
-                "SubscriberKey": "{{Contact.Default.SubscriberKey}}",
+                "SubscriberKey": "{{Contact.Default.SubscriberKey}}"
             }];
         payload['metaData'].isConfigured = true;        
 
