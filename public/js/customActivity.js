@@ -130,8 +130,7 @@ define([
                 "type": type,
                 "message": message,
                 "phone_name": phone_name,
-                "sms": sms,
-                "phone3": "{{Event.DEAudience-3c10b0c1-caa3-a5e0-58d9-ec86170b925f.Id}}"
+                "sms": sms
             }];
         payload['metaData'].isConfigured = true;        
 
