@@ -110,7 +110,8 @@ define([
     }
 
     function save() {
-        var DE = "Omn1 Push";
+        // var DE = "Omn1 Push";
+        var DE = "DEAudience-3c10b0c1-caa3-a5e0-58d9-ec86170b925f";
         var name = $("#omn1-task-name_msg").val();
         var time = $("#omn1-task-time_msg").val();
         var type = $("#omn1-task-type_msg").val();
