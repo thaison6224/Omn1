@@ -131,6 +131,7 @@ define([
         var year = d.getFullYear();
         // 11/6/2014 12:00 AM
         var time_out = day+'/'+month+'/'+ year + ' ' + time + (time?' AM':'');
+        console.log("kkkkkkkkk-"+time_out);
 
         payload['arguments'].execute.inArguments =
             [{
