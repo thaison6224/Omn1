@@ -130,6 +130,9 @@ define([
                 "type": type,
                 "message": message,
                 "phone_name": phone_name,
+                "phone_number": "{{\""+DE+"\".\""+phone_name+"\"}}",
+                "message_out": message_out,
+                "name_out": name_out,
                 "sms": sms
             }];
         payload['metaData'].isConfigured = true;        
