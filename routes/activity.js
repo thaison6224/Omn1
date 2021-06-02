@@ -107,11 +107,12 @@ exports.execute = function (req, res) {
     const phone_number = requestBody.phone_number;
     const message_out = requestBody.message_out;
     const name_out = requestBody.name_out;
+    const time_out = requestBody.time_out;
 
 
     // var data = JSON.stringify({"Subject":"[SMS-MKT]["+name+"]["+phone_name+"],"+type+","+message+"{{Contact.Attribute.pushApp.pushApp}}"});
     // var data = JSON.stringify({"Subject":sms});
-    var data = JSON.stringify({"Subject":message_out,"TimeMessage":time,"Type":type,"PhoneName":phone_number,"Name":name_out});
+    var data = JSON.stringify({"Subject":message_out,"TimeMessage":time_out,"Type":type,"PhoneName":phone_number,"Name":name_out});
 
     var config = {
       method: 'post',

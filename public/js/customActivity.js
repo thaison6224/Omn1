@@ -123,6 +123,15 @@ define([
         var name_out = name;
         name_out = name_out.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}")        
         var sms = "[SMS-MKT]["+name_out+"]["+time+"]["+"{{\""+DE+"\".\""+phone_name+"\"}}"+"],"+type+","+message_out;
+        
+        var d = new Date();
+
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var year = d.getFullYear();
+        // 11/6/2014 12:00 AM
+        var time_out = day+'/'+month+'/'+ year + ' ' + time + time?' AM':'';
+
         payload['arguments'].execute.inArguments =
             [{
                 "name": name,
@@ -133,6 +142,7 @@ define([
                 "phone_number": "{{\""+DE+"\".\""+phone_name+"\"}}",
                 "message_out": message_out,
                 "name_out": name_out,
+                "time_out": time_out,
                 "sms": sms
             }];
         payload['metaData'].isConfigured = true;        
