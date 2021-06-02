@@ -129,8 +129,8 @@ define([
         var month = d.getMonth()+1;
         var day = d.getDate();
         var year = d.getFullYear();
-        if(month.length <= 1) month = '0'+month;
-        if(day.length <= 1) day = '0'+day;        
+        if(month < 10) month = '0'+month;
+        if(day < 10) day = '0'+day;        
         // 11/6/2014 12:00 AM
         // var time_out = day+'/'+month+'/'+ year + ' ' + time + (time?' AM':'');
         var time_out = year+'-'+month+'-'+ day + ' ' + time + ':00';
