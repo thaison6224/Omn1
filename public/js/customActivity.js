@@ -84,7 +84,11 @@ define([
 
                 if (key === 'time') {
                     $('#omn1-task-time_msg').val(val);
-                }                                                               
+                }     
+
+                if (key === 'lead_account_name') {
+                    $('#omn1-task-Id').val(val);
+                }                                                                            
 
 
             })
@@ -119,11 +123,13 @@ define([
         var message = $("#omn1-task-content_msg").val();
         var phone_name = $("#omn1-task-phone_name_msg").val();
         var message_out = message;
-        message_out = message_out.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}")
+        message_out = message_out.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}");
         var name_out = name;
-        name_out = name_out.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}")        
+        name_out = name_out.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}") ;       
         var sms = "[SMS-MKT]["+name_out+"]["+time+"]["+"{{\""+DE+"\".\""+phone_name+"\"}}"+"],"+type+","+message_out;
-        
+        var lead_account_name = $("#omn1-task-Id").val();
+        var lead_account = lead_account_name;
+        var lead_account = lead_account_name.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}");;
         var d = new Date();
 
         var month = d.getMonth()+1;
@@ -146,6 +152,8 @@ define([
                 "message_out": message_out,
                 "name_out": name_out,
                 "time_out": time_out,
+                "lead_account_name": lead_account_name,
+                "lead_account": lead_account,
                 "sms": sms
             }];
         payload['metaData'].isConfigured = true;        
@@ -161,24 +169,30 @@ define([
         connection.on('requestedSchema', function (data) {
             console.log('*** Schema ***', JSON.stringify(data['schema']));
             // save schema
-            // let dataJson = data['schema'];
-            // for (let i = 0; i < dataJson.length; i++) {
+            let dataJson = data['schema'];
+            $("#omn1-task-Id").empty();
+            $("#omn1-task-phone_name_msg").empty();
+            $("#omn1-task-Id").append(new Option('Select…', ''));
+            $("#omn1-task-phone_name_msg").append(new Option('Select…', ''));
+            for (let i = 0; i < dataJson.length; i++) {
+                $("#omn1-task-Id").append(new Option(dataJson[i].key, dataJson[i].key));
+                $("#omn1-task-phone_name_msg").append(new Option(dataJson[i].key, dataJson[i].key));
 
-            //     // Last name schema and creation of event schema
-            //     // Last name is a required field in SF so this is used to pull the event schema
-            //     if (dataJson[i].key.toLowerCase().replace(/ /g, '').indexOf("lastname") !== -1) {
-            //         let splitArr = dataJson[i].key.split(".");
-            //         lastnameSchema = splitArr[splitArr.length - 1];
-            //         console.log('Last Name Schema >>', lastnameSchema);
+                // // Last name schema and creation of event schema
+                // // Last name is a required field in SF so this is used to pull the event schema
+                // if (dataJson[i].key.toLowerCase().replace(/ /g, '').indexOf("lastname") !== -1) {
+                //     let splitArr = dataJson[i].key.split(".");
+                //     lastnameSchema = splitArr[splitArr.length - 1];
+                //     console.log('Last Name Schema >>', lastnameSchema);
 
-            //         let splitName = lastnameSchema.split(":");
-            //         let reg = new RegExp(splitName[splitName.length - 1], "g");
-            //         let oldSchema = splitArr[splitArr.length - 1];
+                //     let splitName = lastnameSchema.split(":");
+                //     let reg = new RegExp(splitName[splitName.length - 1], "g");
+                //     let oldSchema = splitArr[splitArr.length - 1];
 
-            //         eventSchema = oldSchema.replace(reg, "");
-            //         console.log("Event Schema >>", eventSchema);
-            //     }
-            // }
+                //     eventSchema = oldSchema.replace(reg, "");
+                //     console.log("Event Schema >>", eventSchema);
+                // }
+            }
 
         });
     }                        

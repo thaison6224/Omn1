@@ -7,11 +7,13 @@
     <meta http-equiv="x-ua-compatible" content="ie-edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="assets/styles/salesforce-lightning-design-system.css" >
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <link rel='stylesheet' href="fonts/SalesforceSans-Bold.ttf">
     <link rel='stylesheet' href="css/styles.css">
     
     <script type="text/javascript" src="js/require.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         (function() {
             var config = {
@@ -61,6 +63,20 @@
             </div>             
           </div>
           <div class="slds-col slds-size_2-of-4">
+          </div>
+          <div class="slds-col slds-size_2-of-4">
+            <div class="slds-form-element">
+              <label class="slds-form-element__label" for="omn1-task-Id">Lead/Account fieldname</label>
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select" id="omn1-task-Id">
+                    <option value="">Select…</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slds-col slds-size_2-of-4">
             <div class="slds-form-element">
               <label class="slds-form-element__label" for="omn1-task-type_msg">Loại message</label>
               <div class="slds-form-element__control">
@@ -93,7 +109,7 @@
               </div>
             </div>            
           </div>          
-          <div class="slds-col slds-size_2-of-4">
+          <!-- <div class="slds-col slds-size_2-of-4">
             <div class="slds-form-element">
               <label class="slds-form-element__label" for="omn1-task-phone_name_msg">
                 <abbr class="slds-required" title="required">* </abbr>Phone fieldname</label>
@@ -101,7 +117,19 @@
                 <input type="text" id="omn1-task-phone_name_msg" required="" class="slds-input" />
               </div>
             </div>             
-          </div>
+          </div> -->
+          <div class="slds-col slds-size_2-of-4">
+            <div class="slds-form-element">
+              <label class="slds-form-element__label" for="omn1-task-phone_name_msg">Phone fieldname</label>
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select" id="omn1-task-phone_name_msg">
+                    <option value="">Select…</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>          
           <div class="slds-col slds-size_4-of-4">
             <div class="slds-form-element">
               <label class="slds-form-element__label" for="omn1-task-content_msg">Nội dung message</label>
