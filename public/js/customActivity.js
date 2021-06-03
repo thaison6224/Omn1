@@ -170,6 +170,8 @@ define([
             console.log('*** Schema ***', JSON.stringify(data['schema']));
             // save schema
             let dataJson = data['schema'];
+            let omn1_task_Id = $("#omn1-task-Id").val();
+            let phone_name_msg = $("#omn1-task-phone_name_msg").val();
             $("#omn1-task-Id").empty();
             $("#omn1-task-phone_name_msg").empty();
             $("#omn1-task-Id").append(new Option('Select…', ''));
@@ -177,23 +179,9 @@ define([
             for (let i = 0; i < dataJson.length; i++) {
                 $("#omn1-task-Id").append(new Option(dataJson[i].name, dataJson[i].name));
                 $("#omn1-task-phone_name_msg").append(new Option(dataJson[i].name, dataJson[i].name));
-
-                // // Last name schema and creation of event schema
-                // // Last name is a required field in SF so this is used to pull the event schema
-                // if (dataJson[i].key.toLowerCase().replace(/ /g, '').indexOf("lastname") !== -1) {
-                //     let splitArr = dataJson[i].key.split(".");
-                //     lastnameSchema = splitArr[splitArr.length - 1];
-                //     console.log('Last Name Schema >>', lastnameSchema);
-
-                //     let splitName = lastnameSchema.split(":");
-                //     let reg = new RegExp(splitName[splitName.length - 1], "g");
-                //     let oldSchema = splitArr[splitArr.length - 1];
-
-                //     eventSchema = oldSchema.replace(reg, "");
-                //     console.log("Event Schema >>", eventSchema);
-                // }
             }
-
+            $("#omn1-task-Id").val(omn1_task_Id);
+            $("#omn1-task-phone_name_msg").val(phone_name_msg);
         });
     }                        
 
