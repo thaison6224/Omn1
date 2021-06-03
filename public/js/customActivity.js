@@ -175,8 +175,8 @@ define([
             $("#omn1-task-Id").append(new Option('Select…', ''));
             $("#omn1-task-phone_name_msg").append(new Option('Select…', ''));
             for (let i = 0; i < dataJson.length; i++) {
-                $("#omn1-task-Id").append(new Option(dataJson[i].key, dataJson[i].key));
-                $("#omn1-task-phone_name_msg").append(new Option(dataJson[i].key, dataJson[i].key));
+                $("#omn1-task-Id").append(new Option(dataJson[i].name, dataJson[i].name));
+                $("#omn1-task-phone_name_msg").append(new Option(dataJson[i].name, dataJson[i].name));
 
                 // // Last name schema and creation of event schema
                 // // Last name is a required field in SF so this is used to pull the event schema
