@@ -62,7 +62,8 @@ define([
         var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
 
         console.log('Has In arguments: '+JSON.stringify(inArguments));
-
+        var omn1_task_Id = '';
+        var phone_name_msg = '';
         $.each(inArguments, function (index, inArgument) {
             $.each(inArgument, function (key, val) {
 
@@ -79,6 +80,7 @@ define([
                 }
 
                 if (key === 'phone_name') {
+                    phone_name_msg = val;
                     $('#omn1-task-phone_name_msg').val(val);
                 } 
 
@@ -87,6 +89,7 @@ define([
                 }     
 
                 if (key === 'lead_account_name') {
+                    omn1_task_Id = val;
                     $('#omn1-task-Id').val(val);
                 }                                                                            
 
@@ -99,7 +102,7 @@ define([
             text: 'done',
             visible: true
         });
-        parseEventSchema();
+        parseEventSchema(phone_name_msg,omn1_task_Id);
     } 
 
     function onGetTokens (tokens) {
@@ -163,15 +166,15 @@ define([
 
     }
 
-    function parseEventSchema() {
+    function parseEventSchema(phone_name_msg,omn1_task_Id) {
         // Pulling data from the schema
         connection.trigger('requestSchema');
         connection.on('requestedSchema', function (data) {
             console.log('*** Schema ***', JSON.stringify(data['schema']));
             // save schema
             let dataJson = data['schema'];
-            let omn1_task_Id = $("#omn1-task-Id").val();
-            let phone_name_msg = $("#omn1-task-phone_name_msg").val();
+            // let omn1_task_Id = $("#omn1-task-Id").val();
+            // let phone_name_msg = $("#omn1-task-phone_name_msg").val();
             $("#omn1-task-Id").empty();
             $("#omn1-task-phone_name_msg").empty();
             $("#omn1-task-Id").append(new Option('Select…', ''));
