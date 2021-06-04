@@ -113,7 +113,7 @@ exports.execute = function (req, res) {
 
     // var data = JSON.stringify({"Subject":"[SMS-MKT]["+name+"]["+phone_name+"],"+type+","+message+"{{Contact.Attribute.pushApp.pushApp}}"});
     // var data = JSON.stringify({"Subject":sms});
-    var data = JSON.stringify({"Subject":name_out,"TimeMessage":time_out,"Type":type,"PhoneName":phone_number,"Name":name_out,'OwnerId':lead_account});
+    var data = JSON.stringify({"Subject":name_out,"TimeMessage":time_out,"Type":type,"PhoneName":phone_number.replace(/^0+/, '+84'),"Name":name_out,'OwnerId':lead_account});
 
     var config = {
       method: 'post',
