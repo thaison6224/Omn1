@@ -126,13 +126,16 @@ define([
         var message = $("#omn1-task-content_msg").val();
         var phone_name = $("#omn1-task-phone_name_msg").val();
         var message_out = message;
-        message_out = message_out.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}");
+        if(message_out && message_out !='')
+            message_out = message_out.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}");
         var name_out = name;
-        name_out = name_out.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}") ;       
-        var sms = "[SMS-MKT]["+name_out+"]["+time+"]["+"{{\""+DE+"\".\""+phone_name+"\"}}"+"],"+type+","+message_out;
+        if(name_out && name_out !='')
+            name_out = name_out.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}") ;       
+        // var sms = "[SMS-MKT]["+name_out+"]["+time+"]["+"{{\""+DE+"\".\""+phone_name+"\"}}"+"],"+type+","+message_out;
         var lead_account_name = $("#omn1-task-Id").val();
         var lead_account = lead_account_name;
-        var lead_account = lead_account_name.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}");;
+        if(lead_account && lead_account !='')
+         lead_account = lead_account_name.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}");;
         var d = new Date();
 
         var month = d.getMonth()+1;
@@ -156,8 +159,7 @@ define([
                 "name_out": name_out,
                 "time_out": time_out,
                 "lead_account_name": lead_account_name,
-                "lead_account": lead_account,
-                "sms": sms
+                "lead_account": lead_account
             }];
         payload['metaData'].isConfigured = true;        
 
