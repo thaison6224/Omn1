@@ -145,7 +145,9 @@ define([
         if(day < 10) day = '0'+day;        
         // 11/6/2014 12:00 AM
         // var time_out = day+'/'+month+'/'+ year + ' ' + time + (time?' AM':'');
-        var time_out = day+'/'+month+'/'+ year + ' ' + time + ':00';
+        var time_out = '';
+        if(time && time !='')
+         time_out = day+'/'+month+'/'+ year + ' ' + time + ':00';
 
         payload['arguments'].execute.inArguments =
             [{
