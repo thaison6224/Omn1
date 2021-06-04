@@ -94,7 +94,7 @@ exports.execute = function (req, res) {
     console.log("3");	
     console.log("2");	
     console.log("1");	
-    console.log("Executed: "+req.body);
+    logData(req);
     
     var requestBody = req.body.inArguments[0];
 
@@ -134,7 +134,7 @@ exports.execute = function (req, res) {
     });
 
     // FOR TESTING
-    logData(req);
+    
     res.send(200, 'Publish');
 
     // Used to decode JWT
