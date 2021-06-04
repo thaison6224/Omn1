@@ -184,8 +184,10 @@ define([
             $("#omn1-task-Id").append(new Option('Select…', ''));
             $("#omn1-task-phone_name_msg").append(new Option('Select…', ''));
             for (let i = 0; i < dataJson.length; i++) {
-                $("#omn1-task-Id").append(new Option(dataJson[i].name, dataJson[i].name));
-                $("#omn1-task-phone_name_msg").append(new Option(dataJson[i].name, dataJson[i].name));
+                if(dataJson[i].name && dataJson[i].name != ''){
+                    $("#omn1-task-Id").append(new Option(dataJson[i].name, dataJson[i].name));
+                    $("#omn1-task-phone_name_msg").append(new Option(dataJson[i].name, dataJson[i].name));   
+                }
             }
             $("#omn1-task-Id").val(omn1_task_Id);
             $("#omn1-task-phone_name_msg").val(phone_name_msg);
