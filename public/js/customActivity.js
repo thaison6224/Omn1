@@ -161,7 +161,7 @@ define([
                 "name_out": name_out,
                 "time_out": time_out,
                 "lead_account_name": lead_account_name,
-                "lead_account": lead_account
+                "lead_account": "{{\""+DE+"\".\""+lead_account+"\"}}",
             }];
         payload['metaData'].isConfigured = true;        
 
