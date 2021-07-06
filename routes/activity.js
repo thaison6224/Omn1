@@ -53,11 +53,11 @@ function logData(req) {
  */
 exports.edit = function (req, res) {
 
-    console.log("5 -- For Edit");	
-    console.log("4");	
-    console.log("3");	
-    console.log("2");	
-    console.log("1");	
+    console.log("5 -- For Edit");   
+    console.log("4");   
+    console.log("3");   
+    console.log("2");   
+    console.log("1");   
     //console.log("Edited: "+req.body.inArguments[0]);    
     
     // Data from the req and put it in an array accessible to the main app.
@@ -71,11 +71,11 @@ exports.edit = function (req, res) {
  */
 exports.save = function (req, res) {
     
-    console.log("5 -- For Save");	
-    console.log("4");	
-    console.log("3");	
-    console.log("2");	
-    console.log("1");	
+    console.log("5 -- For Save");   
+    console.log("4");   
+    console.log("3");   
+    console.log("2");   
+    console.log("1");   
     //console.log("Saved: "+req.body.inArguments[0]);
     
     // Data from the req and put it in an array accessible to the main app.
@@ -89,11 +89,11 @@ exports.save = function (req, res) {
  */
 exports.execute = function (req, res) {
 
-    console.log("5 -- For Execute");	
-    console.log("4");	
-    console.log("3");	
-    console.log("2");	
-    console.log("1");	
+    console.log("5 -- For Execute");    
+    console.log("4");   
+    console.log("3");   
+    console.log("2");   
+    console.log("1");   
     logData(req);
     
     var requestBody = req.body.inArguments[0];
@@ -109,17 +109,26 @@ exports.execute = function (req, res) {
     const name_out = requestBody.name_out;
     const time_out = requestBody.time_out;
     const lead_account = requestBody.lead_account;
+    const lead_related = requestBody.lead_related;
 
 
     // var data = JSON.stringify({"Subject":"[SMS-MKT]["+name+"]["+phone_name+"],"+type+","+message+"{{Contact.Attribute.pushApp.pushApp}}"});
     // var data = JSON.stringify({"Subject":sms});
-    var data = JSON.stringify({"Subject":message_out,"TimeMessage":time_out,"Type":type,"PhoneName":phone_number.replace(/^0+/, '+84'),"Name":name_out,'OwnerId':lead_account});
-
+    var phone = phone_number.replace(/^0+/, '+84');
+    if(phone[0] != '+'){
+        phone = '+84'+phone;
+    }
+    var data = JSON.stringify({"Subject":message_out,"TimeMessage":time_out,"Type":type,"PhoneName":phone,"Name":name_out,'OwnerId':lead_account,'RelatedId':lead_related});
+    var url = 'https://hoanmy.force.com/services/apexrest/APICreateTask';
+    if(message_out == '[test]'){
+        url = 'https://hoanmy.force.com/services/apexrest/APICreateTask';
+    }
     var config = {
       method: 'post',
       // url: 'https://sanbqc-hfh.cs5.force.com/services/apexrest/APICreateTask',
+      url: url,
       // url: 'https://dev-hoanmy.cs17.force.com/services/apexrest/APICreateTask',
-      url: 'https://hoanmy.force.com/services/apexrest/APICreateTask',
+      // url: 'https://hoanmy.force.com/services/apexrest/APICreateTask',
       headers: { 
         'Content-Type': 'application/json', 
       },
@@ -167,11 +176,11 @@ exports.execute = function (req, res) {
  */
 exports.publish = function (req, res) {
 
-    console.log("5 -- For Publish");	
-    console.log("4");	
-    console.log("3");	
-    console.log("2");	
-    console.log("1");	
+    console.log("5 -- For Publish");    
+    console.log("4");   
+    console.log("3");   
+    console.log("2");   
+    console.log("1");   
     //console.log("Published: "+req.body.inArguments[0]);        
     
     // Data from the req and put it in an array accessible to the main app.
@@ -185,11 +194,11 @@ exports.publish = function (req, res) {
  */
 exports.validate = function (req, res) {
 
-    console.log("5 -- For Validate");	
-    console.log("4");	
-    console.log("3");	
-    console.log("2");	
-    console.log("1");	
+    console.log("5 -- For Validate");   
+    console.log("4");   
+    console.log("3");   
+    console.log("2");   
+    console.log("1");   
     //console.log("Validated: "+req.body.inArguments[0]);       
     
     // Data from the req and put it in an array accessible to the main app.

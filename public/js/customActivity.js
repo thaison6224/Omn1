@@ -63,6 +63,7 @@ define([
 
         console.log('Has In arguments: '+JSON.stringify(inArguments));
         var omn1_task_Id = '';
+        var omn1_task_RId = '';
         var phone_name_msg = '';
         $.each(inArguments, function (index, inArgument) {
             $.each(inArgument, function (key, val) {
@@ -91,7 +92,11 @@ define([
                 if (key === 'lead_account_name') {
                     omn1_task_Id = val;
                     $('#omn1-task-Id').val(val);
-                }                                                                            
+                }    
+                if (key === 'lead_related_name') {
+                    omn1_task_RId = val;
+                    $('#omn1-task-RId').val(val);
+                }                                                                                         
 
 
             })
@@ -102,7 +107,7 @@ define([
             text: 'done',
             visible: true
         });
-        parseEventSchema(phone_name_msg,omn1_task_Id);
+        parseEventSchema(phone_name_msg,omn1_task_Id,omn1_task_RId);
     } 
 
     function onGetTokens (tokens) {
@@ -135,7 +140,13 @@ define([
         var lead_account_name = $("#omn1-task-Id").val();
         var lead_account = lead_account_name;
         if(lead_account && lead_account !='')
-         lead_account = lead_account_name.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}");;
+         lead_account = lead_account_name.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}");
+
+        var lead_related_name = $("#omn1-task-RId").val();
+        var lead_related = lead_related_name;
+        if(lead_related && lead_related !='')
+         lead_related = lead_related_name.replace(/\%\%(.+?)\%\%/g, "{{\""+DE+"\".\"$1\"}}");
+
         var d = new Date();
 
         var month = d.getMonth()+1;
@@ -162,6 +173,9 @@ define([
                 "time_out": time_out,
                 "lead_account_name": lead_account_name,
                 "lead_account": "{{\""+DE+"\".\""+lead_account+"\"}}",
+                "time_out": time_out,
+                "lead_related_name": lead_related_name,
+                "lead_related": "{{\""+DE+"\".\""+lead_related+"\"}}",                
             }];
         payload['metaData'].isConfigured = true;        
 
@@ -170,7 +184,7 @@ define([
 
     }
 
-    function parseEventSchema(phone_name_msg,omn1_task_Id) {
+    function parseEventSchema(phone_name_msg,omn1_task_Id,omn1_task_RId) {
         // Pulling data from the schema
         connection.trigger('requestSchema');
         connection.on('requestedSchema', function (data) {
@@ -182,14 +196,18 @@ define([
             $("#omn1-task-Id").empty();
             $("#omn1-task-phone_name_msg").empty();
             $("#omn1-task-Id").append(new Option('Select…', ''));
+            $("#omn1-task-RId").empty();
+            $("#omn1-task-RId").append(new Option('Select…', ''));
             $("#omn1-task-phone_name_msg").append(new Option('Select…', ''));
             for (let i = 0; i < dataJson.length; i++) {
                 if(dataJson[i].name && dataJson[i].name != ''){
                     $("#omn1-task-Id").append(new Option(dataJson[i].name, dataJson[i].name));
+                    $("#omn1-task-RId").append(new Option(dataJson[i].name, dataJson[i].name));
                     $("#omn1-task-phone_name_msg").append(new Option(dataJson[i].name, dataJson[i].name));   
                 }
             }
             $("#omn1-task-Id").val(omn1_task_Id);
+            $("#omn1-task-RId").val(omn1_task_RId);
             $("#omn1-task-phone_name_msg").val(phone_name_msg);
         });
     }                        
